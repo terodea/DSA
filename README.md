@@ -1,2 +1,2 @@
 # DataStructures
-Implementation of data structures in Python.
+Implementation of data structures and algorithms in Python.
