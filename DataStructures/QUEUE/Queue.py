@@ -3,55 +3,38 @@
  
 # A linked list (LL) node
 # to store a queue entry
-class Node:
-     
+class Node(object):
+
     def __init__(self, data):
         self.data = data
         self.next = None
- 
-# A class to represent a queue
- 
-# The queue, front stores the front node
-# of LL and rear stores ths last node of LL
-class Queue:
-     
+
+
+class Queue(object):
+
     def __init__(self):
-        self.front = self.rear = None
- 
-    def isEmpty(self):
-        return self.front == None
-     
-    # Method to add an item to the queue
-    def EnQueue(self, item):
-        temp = Node(item)
-         
-        if self.rear == None:
-            self.front = self.rear = temp
-            return
-        self.rear.next = temp
-        self.rear = temp
- 
-    # Method to remove an item from queue
-    def DeQueue(self):
-         
-        if self.isEmpty():
-            return
-        temp = self.front
-        self.front = temp.next
- 
-        if(self.front == None):
-            self.rear = None
-        return str(temp.data)
- 
-# Driver Code
-if __name__== '__main__':
-    q = Queue()
-    q.EnQueue(10)
-    q.EnQueue(20)
-    q.DeQueue()
-    q.DeQueue()
-    q.EnQueue(30)
-    q.EnQueue(40)
-    q.EnQueue(50)
-     
-    print("Dequeued item is " + q.DeQueue())
+        self.head = None
+        self.tail = None
+
+    def enqueue(self, data):
+        node = Node(data)
+        # Empty list
+        if self.head is None and self.tail is None:
+            self.head = node
+            self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
+
+    def dequeue(self):
+        # Empty list
+        if self.head is None and self.tail is None:
+            return None
+        data = self.head.data
+        # Remove only element from a one element list
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+        return data
