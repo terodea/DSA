@@ -69,6 +69,37 @@ void insertAtEndInCLL(struct Node **head_ref, int data){
     }
 }
 
+void deleteLastNodeFromCLL(struct Node **head_ref){
+    struct Node *temp = *head_ref, *current = *head_ref;
+    if(*head_ref == NULL){
+        printf("List can't be empty");
+        return;
+    }
+    while (current -> next != *head_ref){
+        temp = current;
+        current = current -> next;
+    }
+    temp -> next = current -> next;
+    free(current);
+    return;
+}
+
+void deleteFrontNodeFromCLL(struct Node **head_ref){
+    struct Node *temp = *head_ref, *current = *head_ref;
+    if(*head_ref == NULL){
+        printf("List empty");
+        return;
+    }
+    while (current -> next != *head_ref){
+        current = current -> next;
+    }
+    current->next = (*head_ref) -> next;
+    *head_ref = (*head_ref) -> next;
+
+    free(temp);
+    return;
+}
+
 int main(){
     struct Node *head = NULL;
     printf("%d \n",length(head));
@@ -81,6 +112,13 @@ int main(){
     insertAtEndInCLL(&head, 40);
     insertAtEndInCLL(&head, 50);
     insertAtEndInCLL(&head, 60);
+    printf("List length is %d \n",length(head));
+    printList(head);
+
+    deleteLastNodeFromCLL(&head);
+    printf("List length is %d \n",length(head));
+    printList(head);
+    deleteFrontNodeFromCLL(&head);
     printf("List length is %d \n",length(head));
     printList(head);
     return 0;
