@@ -8,5 +8,6 @@ object maxChunksToMakeArraySorted{
     
     def main(args: Array[String]): Unit{
         var data = Array(4,3,2,1,0)
+        maxChunksToMakeArraySorted(arr=data)
     }
 }
