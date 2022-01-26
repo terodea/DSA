@@ -46,7 +46,7 @@ object productExceptSelf{
             }
             res(i) = leftProduct(i-1) * rightProduct(i+1)
         }
-        res
+        res 
     }
 
     def main(args: Array[String]): Unit = {
