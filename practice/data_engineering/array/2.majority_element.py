@@ -1,6 +1,11 @@
 from types import List
 
 class Solution:
+    """
+    https://leetcode.com/problems/majority-element
+    TC: O(n)
+    SC: O(n)
+    """
     def majorityElement(self, nums: List[int]) -> int:
         hashmap = {}
         n = len(nums)
@@ -10,7 +15,7 @@ class Solution:
                 hashmap[i] += 1
             else:
                 hashmap[i] = 1
-                
+
         count = 0
         for key in hashmap.keys():
             _val = hashmap.get(key)
@@ -23,13 +28,14 @@ class Solution:
 class Solution2:
     """
     Moore's Voting Algorithm
+    TC: O(n)
+    SC: O(1)
     """
     def majorityElement(self, nums: List[int]) -> int:
         count=0 
-        ret = 0
+        candidate = 0
         for num in nums:
-            if (count==0): ret = num
-            if (num!=ret): count-= 1
+            if (count==0): candidate = num
+            if (num!=candidate): count-= 1
             else: count+=1
-        return ret
-
+        return candidate
